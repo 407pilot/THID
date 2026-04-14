@@ -4,7 +4,7 @@ The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycr
 
 ## What It Is
 
-The THID is a compact physical control pendant for Tormach's PathPilot CNC controller. It consists of an aluminum housing populated with an Arduino Micro clone and up to four buttons. When a button is pressed, the Arduino emulates a USB keyboard and sends a keystroke combination to the host PC, triggering the corresponding PathPilot action.
+The THID is a compact physical control pendant for Tormach's PathPilot CNC controller, but can work with any controller that uses a USB HID keyboard. It consists of an aluminum housing populated with an Arduino Micro clone and up to four buttons. When a button is pressed, the Arduino emulates a USB keyboard and sends a keystroke combination to the host PC, triggering the corresponding PathPilot action.
 
 The default four-button configuration controls:
 
