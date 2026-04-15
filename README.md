@@ -1,10 +1,16 @@
 # THID — Tormach Human Interface Device
 
-The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released around 2016 as an open source project. The original files have since been removed from that site; this repository preserves and continues the project.
+The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released in 2017 as an open source project. The original files have since been removed from that site; this repository preserves and continues the project. The Arduino sketch has been updated from Austin's original release — the original sketch has been preserved unchanged in the `archive` folder for reference.
+
+## ⚠️ Warning
+
+**This device does not replace a hardware emergency stop.** A software pendant cannot guarantee a response in the event of a program fault, electrical failure, or communication loss. Every CNC machine must have a dedicated hardwired E-stop that cuts power to the drives independently of any software or USB device. Do not use this pendant as a substitute for one.
+
+By building and using this device you accept all risk. No warranty is expressed or implied. The authors are not responsible for damage to equipment, workpieces, or injury resulting from its use.
 
 ## What It Is
 
-The THID is a compact physical control pendant for Tormach's PathPilot CNC controller, but can work with any controller that uses a USB HID keyboard. It consists of an aluminum housing populated with an Arduino Micro clone and up to four buttons. When a button is pressed, the Arduino emulates a USB keyboard and sends a keystroke combination to the host PC, triggering the corresponding PathPilot action.
+The THID is a compact physical control pendant for Tormach's PathPilot CNC controller, but could work with any controller that will accept a USB HID keyboard. It consists of an aluminum housing populated with an Arduino Micro clone and up to four buttons. When a button is pressed, the Arduino emulates a USB keyboard and sends a keystroke combination to the host PC, triggering the corresponding PathPilot action.
 
 The default four-button configuration controls:
 
@@ -116,4 +122,4 @@ AVR-based boards (Leonardo, Micro, Pro Micro) do not require this step.
 
 - The sketch sends keystrokes to whatever application has focus on the host PC. Ensure PathPilot has focus before using the pendant.
 - The device presents itself as a standard USB HID keyboard — no drivers are required on the host PC.
-- This is a software-only safety pendant. It does not replace hardware emergency stop wiring. For machine safety, always ensure a proper hardwired E-stop is in place independent of this device.
+
