@@ -1,8 +1,8 @@
-# THID — Tormach Human Interface Device
+# THID: Tormach Human Interface Device
 
-The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released in 2017 as an open source project. The original files have since been removed from that site; this repository preserves and continues the project. The Arduino sketch has been updated from Austin's original release — the original sketch has been preserved unchanged in the `archive` folder for reference.
+The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released in 2017 as an open source project. The original files have since been removed from that site; this repository preserves and continues the project. The Arduino sketch has been updated from Austin's original release; the original sketch has been preserved unchanged in the `archive` folder for reference.
 
-## ⚠️ Warning
+> ## WARNING
 
 **This device does not replace a hardware emergency stop.** A software pendant cannot guarantee a response in the event of a program fault, electrical failure, or communication loss. Every CNC machine must have a dedicated hardwired E-stop that cuts power to the drives independently of any software or USB device. Do not use this pendant as a substitute for one.
 
@@ -24,17 +24,17 @@ The default four-button configuration controls:
 ## Requirements
 
 ### Hardware
-- Any Arduino-compatible board with native USB HID support — Arduino Leonardo, Micro, Pro Micro, RP2040-based boards, or equivalent clones
+- Any Arduino-compatible board with native USB HID support (Arduino Leonardo, Micro, Pro Micro, RP2040-based boards, or equivalent clones)
 - Momentary pushbutton switches (normally open)
-- Buttons wired between the assigned pin and GND — the internal pullup resistor is used, no external resistor needed
+- Buttons wired between the assigned pin and GND; the internal pullup resistor is used, no external resistor needed
 
 ### Software
 - [Arduino IDE](https://www.arduino.cc/en/software)
-- [Bounce2 library](https://github.com/thomasfredericks/Bounce2) — install via Arduino Library Manager (Sketch → Include Library → Manage Libraries → search "Bounce2")
+- [Bounce2 library](https://github.com/thomasfredericks/Bounce2) - install via Arduino Library Manager (Sketch -> Include Library -> Manage Libraries -> search "Bounce2")
 
 ## Wiring
 
-Buttons are wired between the designated pin and GND. Do not wire buttons to 5V — the sketch uses `INPUT_PULLUP`, which holds each pin HIGH internally. Pressing a button pulls the pin LOW, which triggers the action.
+Buttons are wired between the designated pin and GND. Do not wire buttons to 5V; the sketch uses `INPUT_PULLUP`, which holds each pin HIGH internally. Pressing a button pulls the pin LOW, which triggers the action.
 
 Default pin assignments (edit the pin definitions at the top of the sketch to change them):
 
@@ -77,7 +77,7 @@ Common special key codes:
 | Space | `0x20` |
 | Enter | `0xB0` |
 | Tab | `0xB3` |
-| F1–F12 | `0xC2`–`0xCD` |
+| F1-F12 | `0xC2`-`0xCD` |
 
 A full HID keycode reference can be found [here](https://www.usb.org/sites/default/files/hut1_3_0.pdf) (Section 10, Keyboard/Keypad Page).
 
@@ -100,7 +100,7 @@ buttons[i].interval(10);  // increase if double-triggers are observed
 
 | Qty | Item | Notes | Link |
 |---|---|---|---|
-| 1 | Arduino Micro or compatible clone | Must support native USB HID — see note below | [https://amzn.to/4cnrPwq](https://amzn.to/4cnrPwq) |
+| 1 | Arduino Micro or compatible clone | Must support native USB HID (see note below) | [https://amzn.to/4cnrPwq](https://amzn.to/4cnrPwq) |
 | 1 | Aluminum housing | Use provided solid models for fabrication | |
 | 4 | 19mm momentary pushbutton, stainless steel | Normally open; LED illuminated versions also fit | [https://amzn.to/4sDTDmv](https://amzn.to/4sDTDmv) |
 | 4 | 20mm x 3mm round magnets | 20mm x 2mm magnets will work as well; retain with CA glue or Green Loctite | [https://amzn.to/3O4Rzpr](https://amzn.to/3O4Rzpr) |
@@ -110,7 +110,7 @@ buttons[i].interval(10);  // increase if double-triggers are observed
 
 ### RP2040 boards
 
-RP2040-based boards (such as the Raspberry Pi Pico and its clones) support USB HID but require the [Earle Philhower arduino-pico core](https://github.com/earlephilhower/arduino-pico) rather than the standard Arduino AVR core. To install it, add the following URL to **File → Preferences → Additional Boards Manager URLs** in the Arduino IDE, then install **Raspberry Pi Pico/RP2040 by Earle F. Philhower, III** from the Boards Manager:
+RP2040-based boards (such as the Raspberry Pi Pico and its clones) support USB HID but require the [Earle Philhower arduino-pico core](https://github.com/earlephilhower/arduino-pico) rather than the standard Arduino AVR core. To install it, add the following URL to **File -> Preferences -> Additional Boards Manager URLs** in the Arduino IDE, then install **Raspberry Pi Pico/RP2040 by Earle F. Philhower, III** from the Boards Manager:
 
 ```
 https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
@@ -118,8 +118,11 @@ https://github.com/earlephilhower/arduino-pico/releases/download/global/package_
 
 AVR-based boards (Leonardo, Micro, Pro Micro) do not require this step.
 
+## LED Lighting
+
+The sketch does not currently control the button LEDs, but there is no reason this cannot be added. If you choose illuminated switches, note that the linked buttons do not include a current limiting resistor; you will need to calculate and add the correct resistor for whatever voltage you use. This applies whether you are powering the LEDs from a dedicated power pin or driving them directly from a digital output pin. AVR-based boards (Micro, Pro Micro, Leonardo) output 5V on their digital pins, while most newer boards including RP2040-based clones output 3.3V. Use the correct voltage for your board when sizing your resistor.
+
 ## Notes
 
 - The sketch sends keystrokes to whatever application has focus on the host PC. Ensure PathPilot has focus before using the pendant.
-- The device presents itself as a standard USB HID keyboard — no drivers are required on the host PC.
-
+- The device presents itself as a standard USB HID keyboard; no drivers are required on the host PC.
