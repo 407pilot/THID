@@ -1,6 +1,6 @@
 # THID: Tormach Human Interface Device
 
-The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released in 2017 as an open source project. The original files have since been removed from that site; this repository preserves and continues the project. The Arduino sketch has been updated from Austin's original release; the original sketch has been preserved unchanged in the `archive` folder for reference.
+The THID was created by Austin Allred of [EntirelyCrimson.com](http://entirelycrimson.com) and originally released in 2017 as an open source project. The original files are no longer available from that site; this repository preserves and continues the project. The Arduino sketch has been updated from Austin's original release; the original sketch has been preserved unchanged in the `archive` folder for reference.
 
 > ## WARNING
 
